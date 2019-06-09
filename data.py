@@ -81,7 +81,7 @@ def _collate_fn(batch):
         target = sample[1]
         seq_length = tensor.size(1)
         inputs[x].narrow(1, 0, seq_length).copy_(tensor)
-        input_lens[x] = seq_length
+        input_lens[x] = max_seqlength
         target_lens[x] = len(target)
         targets.extend(target)
     targets = torch.IntTensor(targets)
